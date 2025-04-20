@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCXT Трейдинг Платформа</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CCXT Трейдинг Платформа</h1>
+            <p>Инструмент для анализа криптовалютных рынков</p>
+        </header>
+
+        <!-- Debug container - для отладки -->
+        <div id="debug-container" class="debug-container">
+            <h3>Отладочная информация</h3>
+            <pre id="debug-output">Нажмите кнопку, чтобы начать</pre>
+            <button id="test-ccxt" class="btn secondary">Проверить CCXT</button>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="section">
+                    <h3>Настройки</h3>
+                    <div class="form-group">
+                        <label for="exchange">Биржа:</label>
+                        <select id="exchange">
+                            <option value="binance">Binance</option>
+                            <option value="kucoin">KuCoin</option>
+                            <option value="bybit">Bybit</option>
+                            <option value="okx">OKX</option>
+                            <option value="kraken">Kraken</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="symbol">Торговая пара:</label>
+                        <select id="symbol">
+                            <!-- Основные криптовалюты -->
+                            <option value="BTC/USDT">BTC/USDT</option>
+                            <option value="ETH/USDT">ETH/USDT</option>
+                            <option value="SOL/USDT">SOL/USDT</option>
+                            <option value="BNB/USDT">BNB/USDT</option>
+                            <option value="XRP/USDT">XRP/USDT</option>
+                            <option value="ADA/USDT">ADA/USDT</option>
+                            <option value="DOGE/USDT">DOGE/USDT</option>
+                            <option value="DOT/USDT">DOT/USDT</option>
+                            <option value="MATIC/USDT">MATIC/USDT</option>
+                            <option value="LINK/USDT">LINK/USDT</option>
+                            <option value="AVAX/USDT">AVAX/USDT</option>
+                            <option value="SHIB/USDT">SHIB/USDT</option>
+                            <option value="LTC/USDT">LTC/USDT</option>
+                            <option value="UNI/USDT">UNI/USDT</option>
+                            <option value="ATOM/USDT">ATOM/USDT</option>
+                            
+                            <!-- Мем-коины -->
+                            <option value="PEPE/USDT">PEPE/USDT</option>
+                            <option value="FLOKI/USDT">FLOKI/USDT</option>
+                            <option value="BONK/USDT">BONK/USDT</option>
+                            <option value="WIF/USDT">WIF/USDT</option>
+                            <option value="MEME/USDT">MEME/USDT</option>
+                            <option value="POPCAT/USDT">POPCAT/USDT</option>
+                            <option value="MOG/USDT">MOG/USDT</option>
+                            <option value="BOME/USDT">BOME/USDT</option>
+                            <option value="TURBO/USDT">TURBO/USDT</option>
+                            <option value="BRETT/USDT">BRETT/USDT</option>
+                            <option value="CAT/USDT">CAT/USDT</option>
+                            <option value="DOGE/BTC">DOGE/BTC</option>
+                            <option value="SHIB/BTC">SHIB/BTC</option>
+                            <option value="PEPE/BTC">PEPE/BTC</option>
+                            
+                            <!-- Другие пары -->
+                            <option value="ETH/BTC">ETH/BTC</option>
+                            <option value="SOL/BTC">SOL/BTC</option>
+                            <option value="XRP/BTC">XRP/BTC</option>
+                            <option value="BTC/USDC">BTC/USDC</option>
+                            <option value="ETH/USDC">ETH/USDC</option>
+                            <option value="BTC/EUR">BTC/EUR</option>
+                            <option value="ETH/EUR">ETH/EUR</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeframe">Таймфрейм:</label>
+                        <select id="timeframe">
+                            <option value="1m">1 минута</option>
+                            <option value="5m">5 минут</option>
+                            <option value="15m">15 минут</option>
+                            <option value="30m">30 минут</option>
+                            <option value="1h" selected>1 час</option>
+                            <option value="4h">4 часа</option>
+                            <option value="1d">1 день</option>
+                            <option value="1w">1 неделя</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Индикаторы</h3>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sma" checked>
+                        <label for="sma">Скользящая средняя (SMA)</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="shortPeriod">Короткий период:</label>
+                        <input type="number" id="shortPeriod" value="5" min="2" max="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="longPeriod">Длинный период:</label>
+                        <input type="number" id="longPeriod" value="15" min="5" max="200">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button id="fetchData" class="btn primary">Получить данные</button>
+                    <button id="reset" class="btn secondary">Сбросить</button>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="market">Рынок</button>
+                    <button class="tab-btn" data-tab="chart">График</button>
+                    <button class="tab-btn" data-tab="analysis">Анализ</button>
+                    <button class="tab-btn" data-tab="ai-recommendations">AI-рекомендации</button>
+                    <button class="tab-btn" data-tab="scanner">Сканер</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="market" class="tab-pane active">
+                        <div class="market-dashboard">
+                            <div class="market-main-content">
+                                <div class="market-header">
+                                    <div class="market-pair-info">
+                                        <div id="pair-symbol" class="pair-symbol">BTC/USDT</div>
+                                        <div id="pair-exchange" class="pair-exchange">Binance</div>
+                                    </div>
+                                    <div class="market-update-time">
+                                        <div id="update-time">Обновлено: ожидание данных...</div>
+                                        <button id="refresh-btn" class="refresh-btn">↻</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="market-prices-card">
+                                    <h3>Текущие цены</h3>
+                                    <div id="ticker-info" class="ticker-info-redesigned">
+                                        <div class="ticker-loading">
+                                            <p>Нажмите "Получить данные" для загрузки информации</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="market-ai-card">
+                                    <h3>AI-рекомендации</h3>
+                                    <div id="ai-recommendation" class="ai-recommendation-redesigned">
+                                        <div class="ai-loading">
+                                            <p>Нажмите "Получить данные" для получения рекомендаций</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="market-sidebar">
+                                <div class="market-info-card">
+                                    <h3>Информация о рынке</h3>
+                                    <div id="market-info" class="market-info-redesigned">
+                                        <p>Нажмите "Получить данные" для загрузки информации</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="technical-indicators-card">
+                                    <h3>Индикаторы</h3>
+                                    <div id="technical-analysis" class="technical-analysis-redesigned">
+                                        <div id="indicators-container" class="indicators-container">
+                                            <p>Нажмите "Получить данные" для загрузки технического анализа</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="chart" class="tab-pane">
+                        <div class="card full-width">
+                            <h3>График цены</h3>
+                            <div id="price-chart">
+                                <canvas id="ohlcChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="analysis" class="tab-pane">
+                        <div class="card">
+                            <h3>Технический анализ</h3>
+                            <div id="tech-analysis">
+                                <p>Нажмите "Получить данные" для загрузки информации</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3>Сигналы</h3>
+                            <div id="signals">
+                                <p>Нажмите "Получить данные" для загрузки информации</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Новая панель рекомендаций -->
+                        <div class="card">
+                            <h3>Панель рекомендаций</h3>
+                            <div id="recommendation-panel">
+                                <p>Нажмите "Получить данные" для получения торговых рекомендаций</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Новая вкладка AI-рекомендаций -->
+                    <div id="ai-recommendations" class="tab-pane">
+                        <div class="card full-width">
+                            <h3>AI Торговые Рекомендации</h3>
+                            <p>Анализ и рекомендации, сгенерированные с использованием искусственного интеллекта.</p>
+                            
+                            <div id="ai-recommendations-container" class="ai-recommendations-container">
+                                <div class="ai-summary">
+                                    <h4>Сводка по текущей торговой паре</h4>
+                                    <div id="ai-summary-content">
+                                        <p>Нажмите "Получить данные" для генерации AI-рекомендаций</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="ai-detailed-analysis">
+                                    <h4>Детальный анализ</h4>
+                                    <div id="ai-detailed-content">
+                                        <!-- AI detailed analysis will be filled here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="ai-trading-signals">
+                                    <h4>Торговые сигналы</h4>
+                                    <div id="ai-signals-content">
+                                        <!-- AI signals will be filled here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="ai-risk-analysis">
+                                    <h4>Анализ рисков</h4>
+                                    <div id="ai-risk-content">
+                                        <!-- Risk analysis will be filled here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="ai-market-sentiment">
+                                    <h4>Настроение рынка</h4>
+                                    <div id="ai-sentiment-content">
+                                        <!-- Market sentiment will be filled here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="ai-recommendation-history">
+                                    <h4>История рекомендаций</h4>
+                                    <div id="ai-history-content">
+                                        <!-- Recommendation history will be filled here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="scanner" class="tab-pane">
+                        <div class="card full-width">
+                            <h3>Автоматический сканер рынка</h3>
+                            <p>Сканируйте множество пар одновременно и находите лучшие торговые возможности.</p>
+                            <div id="market-scanner-container" class="market-scanner">
+                                <div class="scanner-controls">
+                                    <h4>Настройки сканера</h4>
+                                    <div class="scanner-settings">
+                                        <div class="form-group">
+                                            <label for="scanMaxPairs">Макс. число пар:</label>
+                                            <input type="number" id="scanMaxPairs" value="50" min="5" max="200">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="scanInterval">Интервал (мин):</label>
+                                            <input type="number" id="scanInterval" value="15" min="1" max="60">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="scanTimeframe">Таймфрейм:</label>
+                                            <select id="scanTimeframe">
+                                                <option value="5m">5 минут</option>
+                                                <option value="15m" selected>15 минут</option>
+                                                <option value="1h">1 час</option>
+                                                <option value="4h">4 часа</option>
+                                                <option value="1d">1 день</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="signalThreshold">Мин. сила сигнала (%):</label>
+                                            <input type="number" id="signalThreshold" value="70" min="50" max="95">
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" id="scanAutoStart">
+                                            <label for="scanAutoStart">Авто-старт</label>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" id="scanNotifyOnSignal" checked>
+                                            <label for="scanNotifyOnSignal">Уведомления</label>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <input type="checkbox" id="enableComplexScore" checked>
+                                            <label for="enableComplexScore">Комплексная оценка</label>
+                                        </div>
+                                        <div class="form-group scoring-weights" id="scoringWeightsContainer">
+                                            <label>Веса оценки:</label>
+                                            <div class="weight-sliders">
+                                                <div class="weight-slider">
+                                                    <label for="trendWeight">Тренд:</label>
+                                                    <input type="range" id="trendWeight" min="5" max="70" value="40" step="5">
+                                                    <span id="trendWeightValue">40%</span>
+                                                </div>
+                                                <div class="weight-slider">
+                                                    <label for="momentumWeight">Моментум:</label>
+                                                    <input type="range" id="momentumWeight" min="5" max="70" value="30" step="5">
+                                                    <span id="momentumWeightValue">30%</span>
+                                                </div>
+                                                <div class="weight-slider">
+                                                    <label for="volumeWeight">Объем:</label>
+                                                    <input type="range" id="volumeWeight" min="5" max="70" value="15" step="5">
+                                                    <span id="volumeWeightValue">15%</span>
+                                                </div>
+                                                <div class="weight-slider">
+                                                    <label for="volatilityWeight">Волатильность:</label>
+                                                    <input type="range" id="volatilityWeight" min="5" max="70" value="15" step="5">
+                                                    <span id="volatilityWeightValue">15%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="scanner-actions">
+                                        <button id="startScanBtn" class="btn primary">Сканировать сейчас</button>
+                                        <button id="toggleAutoScanBtn" class="btn secondary">Включить авто-сканирование</button>
+                                        <button id="saveScanSettingsBtn" class="btn secondary">Сохранить настройки</button>
+                                    </div>
+                                </div>
+                                <div class="scan-results empty">
+                                    <h4>Результаты сканирования</h4>
+                                    <p>Нажмите "Сканировать сейчас" для поиска торговых сигналов.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Добавлен раздел визуализации комплексной оценки -->
+                        <div class="card full-width score-visualization-card" id="scoreVisualizationCard" style="display: none;">
+                            <h3>Визуализация комплексной оценки</h3>
+                            <div class="score-visualization-container">
+                                <div class="score-details">
+                                    <h4 id="scoreSymbol">BTC/USDT</h4>
+                                    <div class="score-summary">
+                                        <div class="overall-score">
+                                            <span id="scoreRating">A+</span>
+                                            <span id="scoreValue">95.5</span>
+                                        </div>
+                                        <div class="score-direction" id="scoreDirection">Покупать</div>
+                                    </div>
+                                    <div class="score-components">
+                                        <div class="score-component">
+                                            <span class="component-name">Тренд:</span>
+                                            <span class="component-value" id="trendScore">90</span>
+                                            <div class="component-bar">
+                                                <div class="component-fill" id="trendScoreFill" style="width: 90%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="score-component">
+                                            <span class="component-name">Моментум:</span>
+                                            <span class="component-value" id="momentumScore">85</span>
+                                            <div class="component-bar">
+                                                <div class="component-fill" id="momentumScoreFill" style="width: 85%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="score-component">
+                                            <span class="component-name">Объем:</span>
+                                            <span class="component-value" id="volumeScore">75</span>
+                                            <div class="component-bar">
+                                                <div class="component-fill" id="volumeScoreFill" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="score-component">
+                                            <span class="component-name">Волатильность:</span>
+                                            <span class="component-value" id="volatilityScore">65</span>
+                                            <div class="component-bar">
+                                                <div class="component-fill" id="volatilityScoreFill" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="radar-chart-container">
+                                    <canvas id="radarChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Создано с использованием библиотеки CCXT. &copy; 2025</p>
+        </footer>
+    </div>
+
+    <!-- Загрузка CCXT с CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/ccxt@3.0.72/dist/ccxt.browser.js"></script>
+    
+    <!-- Загрузка Chart.js для графиков -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Загрузка marked.js для форматирования текста -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Загрузка нашего кода -->
+    <script>
+        // Проверка загрузки CCXT
+        document.addEventListener('DOMContentLoaded', function() {
+            const debugOutput = document.getElementById('debug-output');
+            const testCcxtBtn = document.getElementById('test-ccxt');
+            
+            if (testCcxtBtn) {
+                testCcxtBtn.addEventListener('click', function() {
+                    try {
+                        if (typeof ccxt !== 'undefined') {
+                            debugOutput.textContent = 'CCXT загружен успешно!\n';
+                            debugOutput.textContent += 'Версия: ' + ccxt.version + '\n';
+                            debugOutput.textContent += 'Доступные биржи: ' + Object.keys(ccxt).filter(key => 
+                                typeof ccxt[key] === 'function' && key !== 'Exchange').slice(0, 10).join(', ') + '...';
+                        } else {
+                            debugOutput.textContent = 'Ошибка: CCXT не загружен!';
+                        }
+                    } catch (e) {
+                        debugOutput.textContent = 'Ошибка при проверке CCXT: ' + e.message;
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <script type="module" src="app.js"></script>
+    <script type="module" src="market-scanner.js"></script>
+</body>
+</html>

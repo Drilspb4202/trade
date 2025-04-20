@@ -1,0 +1,2641 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+:root {
+    --primary-color: #2962ff;
+    --primary-dark: #0039cb;
+    --primary-light: #768fff;
+    --secondary-color: #ff6d00;
+    --secondary-dark: #c43e00;
+    --success-color: #2e7d32;
+    --warning-color: #f57c00;
+    --danger-color: #d32f2f;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #757575;
+    --text-dark: #212121;
+    --text-light: #fafafa;
+    --border-radius: 4px;
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Заголовок */
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Основное содержимое */
+.main-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Боковая панель */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.section h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group select, 
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    text-align: center;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn.secondary {
+    background-color: var(--medium-gray);
+    color: var(--text-dark);
+    width: 100%;
+}
+
+.btn.secondary:hover {
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+/* Основная область контента */
+.content {
+    flex-grow: 1;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    flex-grow: 1;
+    transition: background-color 0.3s;
+}
+
+.tab-btn:hover {
+    background-color: var(--light-gray);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Карточки */
+.card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#price-chart {
+    height: 400px;
+    position: relative;
+}
+
+/* Информационные панели */
+.info-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.info-item {
+    flex: 1;
+    min-width: 150px;
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.info-item .label {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.info-item .value {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info-item.up .value {
+    color: var(--success-color);
+}
+
+.info-item.down .value {
+    color: var(--danger-color);
+}
+
+/* Стили для торговых сигналов и индикаторов */
+.signal-panel {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.signal-panel.bullish {
+    background-color: rgba(0, 200, 83, 0.1);
+    border-left: 4px solid #00c853;
+}
+
+.signal-panel.bearish {
+    background-color: rgba(255, 82, 82, 0.1);
+    border-left: 4px solid #ff5252;
+}
+
+.signal-panel.neutral {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-left: 4px solid #808080;
+}
+
+.signal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.signal-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.signal-strength {
+    display: flex;
+    align-items: center;
+}
+
+.strength-label {
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.strength-bar {
+    width: 100px;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.strength-value {
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+.bearish .strength-value {
+    background-color: #F44336;
+}
+
+.signal-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.signal-tag {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 3px 8px;
+}
+
+.indicators-summary {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.indicators-summary h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.indicator-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.indicator-name {
+    font-weight: 500;
+}
+
+.indicator-value {
+    font-weight: 600;
+}
+
+.indicator-value.bullish, .indicator-value.oversold {
+    color: #00c853;
+}
+
+.indicator-value.bearish, .indicator-value.overbought {
+    color: #ff5252;
+}
+
+.recommendation {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.recommendation h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.rec-action {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.rec-details {
+    font-size: 14px;
+    color: #666;
+}
+
+.recommendation.strong-buy .rec-action, .recommendation.buy .rec-action {
+    color: #00c853;
+}
+
+.recommendation.strong-sell .rec-action, .recommendation.sell .rec-action {
+    color: #ff5252;
+}
+
+.recommendation.neutral .rec-action {
+    color: #808080;
+}
+
+/* Существующие стили для сигналов */
+.bullish {
+    color: #00c853;
+}
+
+.bearish {
+    color: #ff5252;
+}
+
+.neutral {
+    color: #757575;
+}
+
+.strong-buy, .buy {
+    color: #00c853;
+}
+
+.strong-sell, .sell {
+    color: #ff5252;
+}
+
+.overbought {
+    color: #ff5252;
+}
+
+.oversold {
+    color: #00c853;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    color: var(--dark-gray);
+    font-size: 14px;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}
+
+/* Стили для загрузки */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: var(--dark-gray);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Добавляю стили для отладочного контейнера */
+.debug-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: monospace;
+}
+
+.debug-container h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.debug-container pre {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 3px;
+    max-height: 150px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+/* Стили для системы алертинга */
+.alerts-container {
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.alerts-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.alerts-form .checkbox-group,
+.alerts-form .form-group {
+    margin-bottom: 10px;
+}
+
+.alerts-form button {
+    grid-column: span 2;
+    margin-top: 10px;
+}
+
+.alerts-history {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.alerts-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.alert-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.alert-item.bullish {
+    border-left-color: #00c853;
+    background-color: rgba(0, 200, 83, 0.05);
+}
+
+.alert-item.bearish {
+    border-left-color: #ff5252;
+    background-color: rgba(255, 82, 82, 0.05);
+}
+
+.alert-time {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.alert-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.alert-message {
+    font-size: 14px;
+}
+
+/* Всплывающие сообщения */
+.messages-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 300px;
+}
+
+.message {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease-out;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.message.hide {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.message.info {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    color: #0d47a1;
+}
+
+.message.success {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    color: #1b5e20;
+}
+
+.message.danger {
+    background-color: #ffebee;
+    border-left: 4px solid #F44336;
+    color: #b71c1c;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Стили для тестирования уведомлений */
+#testAlert {
+    background-color: #673AB7;
+    color: white;
+}
+
+#testAlert:hover {
+    background-color: #5E35B1;
+}
+
+/* Стили для маркет-сканера */
+.market-scanner {
+    margin-top: 20px;
+}
+
+.scanner-status {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.scanner-status.error {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #2196F3;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: #2196F3;
+    transition: width 0.3s ease;
+}
+
+.scanner-controls {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.scanner-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.scanner-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.scan-results {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.scan-results.empty {
+    text-align: center;
+    padding: 30px;
+    color: #757575;
+}
+
+.scan-time {
+    font-size: 12px;
+    color: #757575;
+    margin-bottom: 15px;
+}
+
+.results-table-container {
+    overflow-x: auto;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th {
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.results-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.results-table tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.results-table .symbol {
+    font-weight: 600;
+}
+
+.results-table .price {
+    font-family: monospace;
+}
+
+.results-table .strength {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.results-table .strength-bar {
+    width: 80px;
+    height: 6px;
+    background-color: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.results-table .strength-value {
+    height: 100%;
+}
+
+.results-table .strength-value.bullish {
+    background-color: #00c853;
+}
+
+.results-table .strength-value.bearish {
+    background-color: #ff5252;
+}
+
+.results-table .change.bullish {
+    color: #00c853;
+}
+
+.results-table .change.bearish {
+    color: #ff5252;
+}
+
+.results-table .action {
+    font-weight: 600;
+}
+
+.results-table .action.bullish {
+    color: #00c853;
+}
+
+.results-table .action.bearish {
+    color: #ff5252;
+}
+
+.results-table .signal-type {
+    font-size: 12px;
+    color: #757575;
+    font-family: monospace;
+}
+
+/* Стили для комплексной оценки */
+.composite-score {
+    min-width: 120px;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 6px;
+    position: relative;
+}
+
+.score-rating {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    background-color: #4a4a4a;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+
+.score-rating[class*="A"] {
+    background-color: #00c853;
+}
+
+.score-rating[class*="B"] {
+    background-color: #2196F3;
+}
+
+.score-rating[class*="C"] {
+    background-color: #FFC107;
+}
+
+.score-rating[class*="D"] {
+    background-color: #FF9800;
+}
+
+.score-rating[class="F"] {
+    background-color: #F44336;
+}
+
+.score-value {
+    font-size: 14px;
+    color: #616161;
+    margin-bottom: 3px;
+}
+
+.score-direction {
+    font-size: 12px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+
+.score-direction.bullish {
+    background-color: rgba(0, 200, 83, 0.1);
+    color: #00c853;
+}
+
+.score-direction.bearish {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: #ff5252;
+}
+
+.score-direction.neutral {
+    background-color: rgba(128, 128, 128, 0.1);
+    color: #757575;
+}
+
+/* Адаптивный дизайн для сканера */
+@media (max-width: 900px) {
+    .scanner-settings {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .scanner-settings {
+        grid-template-columns: 1fr;
+    }
+    
+    .scanner-actions {
+        flex-direction: column;
+    }
+}
+
+/* Стили для подробной страницы комплексной оценки */
+.score-details {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.score-title {
+    display: flex;
+    align-items: center;
+}
+
+.score-title h3 {
+    margin: 0;
+    margin-right: 15px;
+}
+
+.score-title .score-badge {
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+.score-components {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.score-component {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+}
+
+.component-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.component-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.component-score {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.component-bar {
+    height: 5px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.component-bar-value {
+    height: 100%;
+    background-color: #2196F3;
+}
+
+.trend .component-bar-value {
+    background-color: #673AB7;
+}
+
+.momentum .component-bar-value {
+    background-color: #2196F3;
+}
+
+.volume .component-bar-value {
+    background-color: #FFC107;
+}
+
+.volatility .component-bar-value {
+    background-color: #FF9800;
+}
+
+.component-details {
+    font-size: 13px;
+    color: #757575;
+}
+
+.component-weight {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #616161;
+}
+
+@media (max-width: 768px) {
+    .score-components {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стили для панели рекомендаций */
+.recommendation-panel {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.recommendation-panel h4 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.recommendation {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.recommendation-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.recommendation-strength {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.strength-bar {
+    height: 10px;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.strength-value {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.recommendation-details {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.price-info {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Стили для разных типов рекомендаций */
+.strong-bullish {
+    border-left: 5px solid #1e8e3e;
+}
+
+.strong-bullish .recommendation-label {
+    color: #1e8e3e;
+}
+
+.strong-bullish .strength-value {
+    background-color: #1e8e3e;
+}
+
+.bullish {
+    border-left: 5px solid #34a853;
+}
+
+.bullish .recommendation-label {
+    color: #34a853;
+}
+
+.bullish .strength-value {
+    background-color: #34a853;
+}
+
+.slightly-bullish {
+    border-left: 5px solid #81c995;
+}
+
+.slightly-bullish .recommendation-label {
+    color: #81c995;
+}
+
+.slightly-bullish .strength-value {
+    background-color: #81c995;
+}
+
+.neutral {
+    border-left: 5px solid #9aa0a6;
+}
+
+.neutral .recommendation-label {
+    color: #5f6368;
+}
+
+.neutral .strength-value {
+    background-color: #9aa0a6;
+}
+
+.slightly-bearish {
+    border-left: 5px solid #f29900;
+}
+
+.slightly-bearish .recommendation-label {
+    color: #f29900;
+}
+
+.slightly-bearish .strength-value {
+    background-color: #f29900;
+}
+
+.bearish {
+    border-left: 5px solid #ea4335;
+}
+
+.bearish .recommendation-label {
+    color: #ea4335;
+}
+
+.bearish .strength-value {
+    background-color: #ea4335;
+}
+
+.strong-bearish {
+    border-left: 5px solid #c5221f;
+}
+
+.strong-bearish .recommendation-label {
+    color: #c5221f;
+}
+
+.strong-bearish .strength-value {
+    background-color: #c5221f;
+}
+
+/* Медиа-запрос для более крупных экранов */
+@media (min-width: 768px) {
+    .recommendation-panel .factors-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Стили для расширенного блока информации о рынке */
+.market-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 10px;
+}
+
+.market-title {
+    display: flex;
+    align-items: center;
+}
+
+.market-title h3 {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.badge.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.badge.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.badge.warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.badge.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.badge.secondary {
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+.meme-coin-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.market-exchange {
+    display: flex;
+    align-items: center;
+}
+
+.exchange-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.market-info-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-panel {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.info-panel h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--medium-gray);
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.info-item {
+    margin-bottom: 5px;
+}
+
+.info-item .label {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-bottom: 3px;
+}
+
+.info-item .value {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.info-item.up .value {
+    color: var(--success-color);
+}
+
+.info-item.down .value {
+    color: var(--danger-color);
+}
+
+.info-timestamp {
+    font-size: 12px;
+    color: var(--dark-gray);
+    text-align: right;
+    margin-top: 10px;
+}
+
+.market-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.market-actions .btn {
+    margin-right: 10px;
+}
+
+/* Стили для AI-рекомендаций */
+.recommendation-panel {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.recommendation-panel h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+.ai-recommendation {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}
+
+.ai-recommendation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ai-action {
+    display: flex;
+    align-items: center;
+}
+
+.action-icon {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.action-text {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.ai-confidence {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.confidence-meter {
+    width: 120px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.confidence-value {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.confidence-text {
+    font-size: 12px;
+    color: var(--dark-gray);
+}
+
+.ai-reasoning {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.ai-timestamp {
+    font-size: 12px;
+    color: var(--dark-gray);
+    text-align: right;
+}
+
+.ai-recommendation.strong-buy .action-text,
+.ai-recommendation.strong-buy .action-icon {
+    color: #1b5e20;
+}
+
+.ai-recommendation.strong-buy .confidence-value {
+    background-color: #1b5e20;
+}
+
+.ai-recommendation.buy .action-text,
+.ai-recommendation.buy .action-icon {
+    color: #2e7d32;
+}
+
+.ai-recommendation.buy .confidence-value {
+    background-color: #2e7d32;
+}
+
+.ai-recommendation.neutral .action-text,
+.ai-recommendation.neutral .action-icon {
+    color: #757575;
+}
+
+.ai-recommendation.neutral .confidence-value {
+    background-color: #757575;
+}
+
+.ai-recommendation.sell .action-text,
+.ai-recommendation.sell .action-icon {
+    color: #c62828;
+}
+
+.ai-recommendation.sell .confidence-value {
+    background-color: #c62828;
+}
+
+.ai-recommendation.strong-sell .action-text,
+.ai-recommendation.strong-sell .action-icon {
+    color: #b71c1c;
+}
+
+.ai-recommendation.strong-sell .confidence-value {
+    background-color: #b71c1c;
+}
+
+.ai-error {
+    color: var(--danger-color);
+    text-align: center;
+    padding: 10px;
+}
+
+.error-details {
+    font-size: 12px;
+    margin-top: 5px;
+    color: var(--dark-gray);
+}
+
+/* Стили для вкладки AI-рекомендаций */
+.ai-recommendations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+.ai-recommendations-container > div {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.ai-recommendations-container h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 10px;
+}
+
+.ai-recommendation-large {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-gray);
+}
+
+.ai-recommendation-large .ai-recommendation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.ai-symbol {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.ai-confidence-block {
+    margin: 15px 0;
+}
+
+.confidence-label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.confidence-meter-large {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.confidence-value-large {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
+
+.confidence-percentage {
+    text-align: right;
+    font-weight: 600;
+}
+
+.ai-detailed-block,
+.ai-signals-block,
+.ai-risk-block,
+.ai-sentiment-block,
+.ai-history-block {
+    padding: 15px;
+}
+
+.ai-detailed-block h5,
+.ai-signals-block h5,
+.ai-risk-block h5,
+.ai-sentiment-block h5,
+.ai-history-block h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: var(--text-dark);
+}
+
+.ai-detailed-block h6,
+.ai-signals-block h6,
+.ai-risk-block h6,
+.ai-sentiment-block h6,
+.ai-history-block h6 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.detailed-section {
+    margin-bottom: 20px;
+}
+
+.factor-group {
+    margin-bottom: 15px;
+}
+
+.bullish-factors-title {
+    color: var(--success-color) !important;
+}
+
+.bearish-factors-title {
+    color: var(--danger-color) !important;
+}
+
+.bullish-factors li,
+.bearish-factors li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.key-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.level-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--medium-gray);
+}
+
+.level-item.current-price {
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.level-type {
+    color: var(--dark-gray);
+}
+
+.ai-signal-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-gray);
+    border-left: 4px solid #ddd;
+}
+
+.ai-signal-item.buy {
+    border-left-color: var(--success-color);
+}
+
+.ai-signal-item.sell {
+    border-left-color: var(--danger-color);
+}
+
+.signal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.signal-type {
+    font-weight: 600;
+}
+
+.buy .signal-type {
+    color: var(--success-color);
+}
+
+.sell .signal-type {
+    color: var(--danger-color);
+}
+
+.signal-strength {
+    font-weight: 600;
+}
+
+.buy .signal-strength {
+    color: var(--success-color);
+}
+
+.sell .signal-strength {
+    color: var(--danger-color);
+}
+
+.signal-description {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.signal-source {
+    font-size: 12px;
+    color: var(--dark-gray);
+}
+
+.risk-summary {
+    margin-bottom: 15px;
+}
+
+.risk-summary p {
+    margin: 5px 0;
+}
+
+.risk-details {
+    margin-bottom: 20px;
+}
+
+.risk-factor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.risk-name {
+    width: 120px;
+    font-weight: 600;
+}
+
+.risk-bar-container {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.risk-bar {
+    height: 100%;
+    background-color: var(--danger-color);
+    border-radius: 4px;
+}
+
+.risk-percentage {
+    width: 40px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.meme-coin-risk .risk-name {
+    color: var(--warning-color);
+}
+
+.meme-coin-risk .risk-bar {
+    background-color: var(--warning-color);
+}
+
+.risk-tips {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}
+
+.risk-tips h6 {
+    margin-top: 0;
+}
+
+.risk-tips ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.risk-tips li {
+    margin-bottom: 5px;
+}
+
+.risk-tips li.warning {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.low-risk {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.medium-risk {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.high-risk {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.sentiment-summary {
+    margin-bottom: 20px;
+}
+
+.sentiment-meter {
+    height: 10px;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.sentiment-bullish {
+    height: 100%;
+    background-color: var(--success-color);
+}
+
+.sentiment-bearish {
+    height: 100%;
+    background-color: var(--danger-color);
+}
+
+.sentiment-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.bullish-label {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.bearish-label {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.sentiment-sources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.sentiment-source {
+    margin-bottom: 15px;
+}
+
+.sentiment-meter-small {
+    height: 6px;
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.sentiment-percentage {
+    font-size: 12px;
+    text-align: right;
+}
+
+.sentiment-events {
+    grid-column: 1 / -1;
+}
+
+.events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.event-date {
+    width: 80px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.event-description {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.event-impact {
+    width: 24px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.event-item.positive .event-impact {
+    color: var(--success-color);
+}
+
+.event-item.negative .event-impact {
+    color: var(--danger-color);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-gray);
+    border-left: 4px solid #ddd;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.history-symbol {
+    font-weight: 600;
+}
+
+.history-action {
+    font-weight: 600;
+}
+
+.history-confidence {
+    font-weight: 600;
+}
+
+.history-timestamp {
+    font-size: 12px;
+    color: var(--dark-gray);
+    text-align: right;
+}
+
+.history-item.strong-buy {
+    border-left-color: #1b5e20;
+}
+
+.history-item.strong-buy .history-action,
+.history-item.strong-buy .history-confidence {
+    color: #1b5e20;
+}
+
+.history-item.buy {
+    border-left-color: #2e7d32;
+}
+
+.history-item.buy .history-action,
+.history-item.buy .history-confidence {
+    color: #2e7d32;
+}
+
+.history-item.neutral {
+    border-left-color: #757575;
+}
+
+.history-item.neutral .history-action,
+.history-item.neutral .history-confidence {
+    color: #757575;
+}
+
+.history-item.sell {
+    border-left-color: #c62828;
+}
+
+.history-item.sell .history-action,
+.history-item.sell .history-confidence {
+    color: #c62828;
+}
+
+.history-item.strong-sell {
+    border-left-color: #b71c1c;
+}
+
+.history-item.strong-sell .history-action,
+.history-item.strong-sell .history-confidence {
+    color: #b71c1c;
+}
+
+.no-signals,
+.no-history {
+    text-align: center;
+    color: var(--dark-gray);
+    padding: 20px;
+    font-style: italic;
+}
+
+p.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    color: var(--dark-gray);
+}
+
+p.loading:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 2px solid var(--medium-gray);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: loading-spin 1s linear infinite;
+}
+
+@keyframes loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Стили для переделанной вкладки "Рынок" */
+.market-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .market-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+.market-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.market-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.market-pair-info {
+    display: flex;
+    align-items: center;
+}
+
+.pair-symbol {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.pair-exchange {
+    font-size: 14px;
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.market-update-time {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.refresh-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.refresh-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.market-prices-card,
+.market-ai-card,
+.market-info-card,
+.technical-indicators-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.market-prices-card h3,
+.market-ai-card h3,
+.market-info-card h3,
+.technical-indicators-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 18px;
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 10px;
+}
+
+.ticker-info-redesigned {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.ticker-info-redesigned .price-box {
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.ticker-info-redesigned .price-label {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.ticker-info-redesigned .price-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ticker-info-redesigned .price-change {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.ticker-info-redesigned .current-price {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.ticker-info-redesigned .current-price .price-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ticker-info-redesigned .price-up .price-change {
+    color: var(--success-color);
+}
+
+.ticker-info-redesigned .price-down .price-change {
+    color: var(--danger-color);
+}
+
+.ai-recommendation-redesigned {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-recommendation-redesigned::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.ai-recommendation-redesigned.strong-buy::before,
+.ai-recommendation-redesigned.buy::before {
+    background-color: var(--success-color);
+}
+
+.ai-recommendation-redesigned.sell::before,
+.ai-recommendation-redesigned.strong-sell::before {
+    background-color: var(--danger-color);
+}
+
+.ai-recommendation-redesigned .ai-recommendation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ai-recommendation-redesigned .ai-action {
+    display: flex;
+    align-items: center;
+}
+
+.ai-recommendation-redesigned .action-icon {
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+.ai-recommendation-redesigned .action-text {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.ai-recommendation-redesigned .ai-confidence {
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ai-recommendation-redesigned .confidence-meter {
+    width: 150px;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.ai-recommendation-redesigned .confidence-value {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.ai-recommendation-redesigned .confidence-text {
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ai-recommendation-redesigned .ai-reasoning {
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.market-info-redesigned {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.market-info-redesigned .info-item {
+    background-color: var(--light-gray);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 0;
+}
+
+.market-info-redesigned .info-item .label {
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.market-info-redesigned .info-item .value {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.technical-analysis-redesigned {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.technical-analysis-redesigned .indicators-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.technical-analysis-redesigned .indicator-item {
+    background-color: var(--light-gray);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+}
+
+.technical-analysis-redesigned .indicator-name {
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.technical-analysis-redesigned .indicator-value {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.technical-analysis-redesigned .bullish {
+    border-left: 3px solid var(--success-color);
+}
+
+.technical-analysis-redesigned .bearish {
+    border-left: 3px solid var(--danger-color);
+}
+
+.technical-analysis-redesigned .neutral {
+    border-left: 3px solid var(--dark-gray);
+}
+
+.ticker-loading,
+.ai-loading {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--dark-gray);
+}
+
+/* Анимация для кнопки обновления */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.refresh-btn.loading {
+    animation: spin 1s linear infinite;
+    pointer-events: none;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f8f8f8;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.modal-close {
+    color: #757575;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #d32f2f;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(90vh - 120px);
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f8f8f8;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Стили для отображения деталей пары */
+.pair-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .pair-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pair-details h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.pair-details h5 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.pair-details .price-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.pair-details .price-info p {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.pair-details .indicators {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.pair-details .indicator-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pair-details .indicator-group {
+    margin-top: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.pair-details .signal-name {
+    font-weight: 600;
+}
+
+.pair-details .signals {
+    grid-column: span 2;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .pair-details .signals {
+        grid-column: span 1;
+    }
+}
+
+.pair-details .signals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pair-details .composite-score {
+    grid-column: span 2;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .pair-details .composite-score {
+        grid-column: span 1;
+    }
+}
+
+.pair-details .score-bar {
+    height: 24px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.pair-details .score-value {
+    height: 100%;
+    background: linear-gradient(90deg, #d32f2f 0%, #ff9800 50%, #2e7d32 100%);
+}
+
+.pair-details .score-display {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.pair-details .score-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    line-height: 24px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+.pair-details .score-container {
+    margin-bottom: 15px;
+}
+
+.pair-details .score-recommendation {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+}
+
+.pair-details .score-components {
+    margin-top: 15px;
+}
+
+/* Классы для рекомендаций */
+.pair-details .strong-buy {
+    border-left: 5px solid #2e7d32;
+}
+
+.pair-details .buy {
+    border-left: 5px solid #4caf50;
+}
+
+.pair-details .neutral {
+    border-left: 5px solid #ff9800;
+}
+
+.pair-details .sell {
+    border-left: 5px solid #ff9800;
+}
+
+.pair-details .strong-sell {
+    border-left: 5px solid #d32f2f;
+}
+
+/* Компоненты оценки */
+.pair-details .component-item {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.pair-details .component-name {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.pair-details .component-value {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+}
+
+.pair-details .component-bar {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.pair-details .component-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d32f2f 0%, #ff9800 50%, #2e7d32 100%);
+}
+
+/* Классы для индикаторов */
+.pair-details .overbought {
+    color: #d32f2f;
+}
+
+.pair-details .oversold {
+    color: #2e7d32;
+}
+
+.pair-details .bullish {
+    color: #2e7d32;
+}
+
+.pair-details .bearish {
+    color: #d32f2f;
+}
+
+/* Общие классы */
+.positive {
+    color: #2e7d32;
+}
+
+.negative {
+    color: #d32f2f;
+}
+
+/* Стили для сигналов в модальном окне */
+.pair-details .signal-item {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ddd;
+}
+
+.pair-details .signal-item.buy {
+    border-left-color: #2e7d32;
+    background-color: rgba(46, 125, 50, 0.05);
+}
+
+.pair-details .signal-item.sell {
+    border-left-color: #d32f2f;
+    background-color: rgba(211, 47, 47, 0.05);
+}
+
+.pair-details .signal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.pair-details .signal-type {
+    font-weight: 600;
+}
+
+.pair-details .signal-item.buy .signal-type {
+    color: #2e7d32;
+}
+
+.pair-details .signal-item.sell .signal-type {
+    color: #d32f2f;
+}
+
+.pair-details .signal-strength {
+    font-weight: 600;
+}
+
+.pair-details .signal-item.buy .signal-strength {
+    color: #2e7d32;
+}
+
+.pair-details .signal-item.sell .signal-strength {
+    color: #d32f2f;
+}
+
+.pair-details .signal-description {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.pair-details .signal-source {
+    font-size: 12px;
+    color: #757575;
+} 
